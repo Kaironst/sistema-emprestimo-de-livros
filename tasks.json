@@ -7,7 +7,7 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "${file}",
+                "./main.c",
                 "./emprestimos/emprestimos.c",
                 "./lista/lista.c",
                 "./livros/livros.c",

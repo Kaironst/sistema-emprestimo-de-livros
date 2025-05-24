@@ -5,6 +5,17 @@
 #include "livros/livros.h"
 #include "usuarios/usuarios.h"
 
+/*
+a fazer
+criar .h do emprestimo
+criar .c do emprestimo
+criar .h da fila
+criar .c da fila
+inteligar todas as listas entre si
+*/
+
+
+
 int main() {
     int opcao=-1, opcao2=-1;
     while (opcao!=0) {

@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//TODO!!!! COMO OS NÓS ESTÃO LIGADOS COM OS EMPRÉSTIMOS, ATUALIZAR RMLIVRO() PARA LIBERAR EMPRESTIMO TAMBEM
+
 NoLivro* iniListaLivro() {
     NoLivro* header=(NoLivro*)malloc(sizeof(NoLivro));
     header->autor="";
@@ -9,6 +11,7 @@ NoLivro* iniListaLivro() {
     header->cod=0;
     header->proximo=NULL;
     header->anterior=NULL;
+    header->Emprestimos=NULL;
     return header;
 }
 
@@ -18,6 +21,7 @@ int addLivro(NoLivro* header,char* titulo, char* autor, int cod, int qtdeDisponi
     novo->titulo=titulo;
     novo->cod=cod;
     novo->qtdeDisponivel=qtdeDisponivel;
+    novo->Emprestimos=NULL;
     novo->proximo=header->proximo;
     header->proximo=novo;
     novo->proximo->anterior=novo;
@@ -52,7 +56,7 @@ int setQtde(NoLivro* no, int qtde) {
     no->qtdeDisponivel=qtde;
 }
 
-int freeLIstaLivro(NoLivro* header) {
+int freeListaLivro(NoLivro* header) {
 while (rmLivro(header->proximo));
 free(header);
 }

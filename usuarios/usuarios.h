@@ -12,13 +12,13 @@ typedef struct NO_USUARIO {
     tipoUsuario tipoUsuario;
     struct NO_USUARIO* proximo;
     struct NO_USUARIO* anterior;
-}NoUsuario;
+}NoUsuario;     //implementação da lista duplamente encadeada com cabeçalho
 
-NoUsuario* iniListaUsuario();
+NoUsuario* iniListaUsuario();   //cria lista
 int addUsuario(NoUsuario* header, char* nome, int raSiape, tipoUsuario tipoUsuario);
-int rmUsuario(NoUsuario* no);
-NoUsuario* getUsuario(NoUsuario* header, char* nome);
-NoUsuario* getUsuarioRaSiape(NoUsuario* header, int raSiape);
-int freeListaUsuario(NoUsuario* header);
+int rmUsuario(NoUsuario* no); //remove usuario da lista
+NoUsuario* getUsuario(NoUsuario* header, char* nome);       //procura usuario por nome
+NoUsuario* getUsuarioRaSiape(NoUsuario* header, int raSiape);       //procura usuario por rasiape
+int freeListaUsuario(NoUsuario* header);        //libera a lista
 
 #endif
