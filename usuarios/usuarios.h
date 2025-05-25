@@ -9,6 +9,7 @@ PROFESSOR
 typedef struct NO_USUARIO {
     char* nome;
     int raSiape;
+    int numEmprestimos;
     tipoUsuario tipoUsuario;
     struct NO_USUARIO* proximo;
     struct NO_USUARIO* anterior;

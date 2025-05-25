@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//TODO!!!! COMO OS NÓS ESTÃO LIGADOS COM OS EMPRÉSTIMOS, ATUALIZAR RMLIVRO() PARA LIBERAR EMPRESTIMO TAMBEM
+//TODO!!!! COMO OS NÓS ESTÃO LIGADOS COM OS EMPRÉSTIMOS, ATUALIZAR RMLIVRO() PARA LIBERAR EMPRESTIMO TAMBEM (E fila de espera)
 
 NoLivro* iniListaLivro() {
     NoLivro* header=(NoLivro*)malloc(sizeof(NoLivro));
@@ -11,7 +11,8 @@ NoLivro* iniListaLivro() {
     header->cod=0;
     header->proximo=NULL;
     header->anterior=NULL;
-    header->Emprestimos=NULL;
+    header->emprestimos=NULL;
+    header->filaEspera=NULL;
     return header;
 }
 
@@ -21,7 +22,8 @@ int addLivro(NoLivro* header,char* titulo, char* autor, int cod, int qtdeDisponi
     novo->titulo=titulo;
     novo->cod=cod;
     novo->qtdeDisponivel=qtdeDisponivel;
-    novo->Emprestimos=NULL;
+    novo->emprestimos=NULL;
+    novo->filaEspera=NULL;
     novo->proximo=header->proximo;
     header->proximo=novo;
     novo->proximo->anterior=novo;
@@ -33,12 +35,13 @@ int rmLivro(NoLivro* no) {
     no->proximo->anterior=no->anterior;
     no->anterior->proximo=no->proximo;
     free(no);
+    no=NULL;
     return 1;
 }
 
 NoLivro* getLivro(NoLivro* header, char* titulo) {
     NoLivro* atual=header->proximo;
-    while (atual!=NULL && atual->titulo!=titulo) {
+    while (atual!=NULL && strcmp(atual->titulo,titulo)!=0) {
         atual=atual->proximo;
     }
     return atual;

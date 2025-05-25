@@ -1,6 +1,7 @@
 #include "usuarios.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 NoUsuario* iniListaUsuario() {
     NoUsuario* header=(NoUsuario*)malloc(sizeof(NoUsuario));
@@ -27,12 +28,13 @@ int rmUsuario(NoUsuario* no) {
     no->proximo->anterior=no->anterior;
     no->anterior->proximo=no->proximo;
     free(no);
+    no=NULL;
     return 1;
 }
 
 NoUsuario* getUsuario(NoUsuario* header, char* nome) {
     NoUsuario* atual=header->proximo;
-    while(atual!=NULL && atual->nome!=nome) {
+    while( atual!=NULL && strcmp(atual->nome,nome)!=0 ) {
         atual=atual->proximo;
     }
     return atual;
@@ -49,4 +51,5 @@ NoUsuario* getUsuarioRaSiape(NoUsuario* header, int raSiape) {
 int freeListaUsuario(NoUsuario* header) {
     while(rmUsuario(header->proximo));
     free(header);
+    header=NULL;
 }

@@ -7,7 +7,8 @@ typedef struct NO_LIVRO {
     char *autor;
     int cod;
     int qtdeDisponivel;
-    NoEmprestimo* Emprestimos;
+    NoEmprestimo* emprestimos;
+    NoFila* filaEspera;
     struct NO_LIVRO *proximo;
     struct NO_LIVRO *anterior;
 }NoLivro;  //implementação da lista dupla com cabeçalho
