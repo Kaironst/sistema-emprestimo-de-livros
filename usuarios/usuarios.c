@@ -26,6 +26,7 @@ int addUsuario(NoUsuario* header, char* nome, int raSiape, tipoUsuario tipoUsuar
 
 int rmUsuario(NoUsuario* no) {
     if (no==NULL || no->anterior==NULL) return 0;     // nó não encontrado
+    free(no->nome);
     no->proximo->anterior=no->anterior;
     no->anterior->proximo=no->proximo;
     free(no);

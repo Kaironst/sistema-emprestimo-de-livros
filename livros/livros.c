@@ -5,7 +5,6 @@
 #include "livros.h"
 #include "../emprestimos/emprestimos.h"
 #include "../lista/lista.h"
-//TODO!!!! COMO OS NÓS ESTÃO LIGADOS COM OS EMPRÉSTIMOS, ATUALIZAR RMLIVRO() PARA LIBERAR EMPRESTIMO TAMBEM (E fila de espera)
 
 NoLivro* iniListaLivro() {
     NoLivro* header=(NoLivro*)malloc(sizeof(NoLivro));
@@ -35,7 +34,11 @@ int addLivro(NoLivro* header,char* titulo, char* autor, int cod, int qtdeDisponi
 }
 
 int rmLivro(NoLivro* no) {
-    if (no==NULL || no->anterior==NULL ) return 0;     // nó não encontrado
+    if (no==NULL || no->anterior==NULL ) return 0; // nó não encontrado
+    freeListaEmprestimo(no);
+    freeListaFila(no);
+    free(no->titulo);
+    free(no->autor);
     no->proximo->anterior=no->anterior;
     no->anterior->proximo=no->proximo;
     free(no);

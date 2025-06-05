@@ -44,6 +44,8 @@ int devolverLivro(NoLivro* livro, NoUsuario* usuario) {
     }while(atual!=livro->emprestimos);
     if (atual->usuario!=usuario) return 0;
     anterior->proximo=atual->proximo;
+    free(atual->dataDevolucao);
+    free(atual->dataEmprestimo);
     free(atual);
     usuario->numEmprestimos--;
     livro->qtdeDisponivel++;
@@ -67,6 +69,8 @@ int freeListaEmprestimo(NoLivro* livro) {
 
     while (aux!=livro->emprestimos) {
         temp=aux->proximo;
+        free(aux->dataDevolucao);
+        free(aux->dataEmprestimo);
         free(aux);
         aux=temp;
     }
