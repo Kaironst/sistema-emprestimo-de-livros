@@ -20,7 +20,8 @@ int addUsuario(NoUsuario* header, char* nome, int raSiape, tipoUsuario tipoUsuar
     novo->tipoUsuario=tipoUsuario;
     novo->proximo=header->proximo;
     header->proximo=novo;
-    novo->proximo->anterior=novo;
+    if (novo->proximo!=NULL)
+        novo->proximo->anterior=novo;
 }
 
 int rmUsuario(NoUsuario* no) {

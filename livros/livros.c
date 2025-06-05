@@ -29,7 +29,8 @@ int addLivro(NoLivro* header,char* titulo, char* autor, int cod, int qtdeDisponi
     novo->filaEspera=NULL;
     novo->proximo=header->proximo;
     header->proximo=novo;
-    novo->proximo->anterior=novo;
+    if (novo->proximo!=NULL)
+        novo->proximo->anterior=novo;
     return 1;
 }
 

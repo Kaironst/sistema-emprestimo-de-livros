@@ -38,11 +38,11 @@ int devolverLivro(NoLivro* livro, NoUsuario* usuario) {
     NoEmprestimo* atual = livro->emprestimos;
     NoEmprestimo* anterior = livro->emprestimos;
     do {
-        if (strcmp(atual->usuario,usuario)==0) break;
+        if (atual->usuario==usuario) break;
         anterior=atual;
         atual=atual->proximo;
     }while(atual!=livro->emprestimos);
-    if (strcmp(atual->usuario,usuario)!=0) return 0;
+    if (atual->usuario!=usuario) return 0;
     anterior->proximo=atual->proximo;
     free(atual);
     usuario->numEmprestimos--;
