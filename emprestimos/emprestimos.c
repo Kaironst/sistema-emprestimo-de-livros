@@ -61,14 +61,17 @@ int devolverLivro(NoLivro* livro, NoUsuario* usuario) {
 }
 
 int freeListaEmprestimo(NoLivro* livro) {
-    while (livro->emprestimos != NULL) {
-        NoEmprestimo* aux = livro->emprestimos->proximo;
-        livro->emprestimos->proximo=livro->emprestimos->proximo->proximo;
-        aux->usuario->numEmprestimos--;
+    if (livro==NULL || livro->emprestimos==NULL) return 0;
+    NoEmprestimo* aux = livro->emprestimos->proximo;
+    NoEmprestimo* temp;
+
+    while (aux!=livro->emprestimos) {
+        temp=aux->proximo;
         free(aux);
-        aux=NULL;
-        livro->qtdeDisponivel++;
+        aux=temp;
     }
+    free(livro->emprestimos);
+    livro->emprestimos==NULL;
     return 1;
 }
 
