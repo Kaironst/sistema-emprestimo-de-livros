@@ -12,9 +12,9 @@ typedef struct NO_EMPRESTIMO{
     struct NO_EMPRESTIMO* proximo;
 } NoEmprestimo; //implementação lista circular (o primeiro ponteiro nesse caso é o ultimo)
 
-int emprestarLivro(NoLivro* livro, NoUsuario* usuario, char* dataEmprestimo, char* dataDevolucao);
-int devolverLivro(NoLivro* livro, NoUsuario* usuario);
-int freeListaEmprestimo(NoLivro* livro);
-void exibirFilaEspera(NoLivro* livro);
-void listarEmprestimosPorUsuario(struct NO_LIVRO* header, NoUsuario* usuario);
+int emprestarLivro(NoLivro* livro, NoUsuario* usuario, char* dataEmprestimo, char* dataDevolucao);      //cria novo nó na lista de emprestimos de um livro
+int devolverLivro(NoLivro* livro, NoUsuario* usuario);      //remove o nó de empréstimo
+int freeListaEmprestimo(NoLivro* livro);        //remove a lista de empréstimos do livro
+void exibirFilaEspera(NoLivro* livro);      //mostra a lista de espera de um livro
+void listarEmprestimosPorUsuario(struct NO_LIVRO* header, NoUsuario* usuario);      //mostra todos os emprestimos de um usuário
 #endif

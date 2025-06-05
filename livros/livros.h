@@ -21,7 +21,7 @@ int addLivro(NoLivro* header,char* titulo, char* autor, int cod, int qtdeDisponi
 int rmLivro(NoLivro* No);      //remove livro especificado pelo nó
 NoLivro* getLivro(NoLivro* header, char* titulo);       //retorna um livro pelo título
 NoLivro* getLivroCod(NoLivro* header, int cod);     //retorna um livro pelo cod
-int setQtde(NoLivro* no, int qtde);
+int setQtde(NoLivro* no, int qtde);     //altera a quantidade de livros disponíveis manualmente
 int freeListaLivro(NoLivro* header);        //libera a lista
 
 
