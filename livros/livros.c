@@ -1,7 +1,10 @@
-#include "livros.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
+#include "livros.h"
+#include "../emprestimos/emprestimos.h"
+#include "../lista/lista.h"
 //TODO!!!! COMO OS NÓS ESTÃO LIGADOS COM OS EMPRÉSTIMOS, ATUALIZAR RMLIVRO() PARA LIBERAR EMPRESTIMO TAMBEM (E fila de espera)
 
 NoLivro* iniListaLivro() {

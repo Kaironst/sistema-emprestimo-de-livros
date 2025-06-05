@@ -1,7 +1,9 @@
 #ifndef LISTA_FILA
 #define LISTA_FILA
-#include "../usuarios/usuarios.h"
-#include "../livros/livros.h"
+#include "../usuarios/usuarios.h" // Seguro incluir
+
+// Forward declaration para evitar ciclo com livros.h
+struct NoLivro;
 
 typedef struct NO_FILA {
 NoUsuario* usuario;

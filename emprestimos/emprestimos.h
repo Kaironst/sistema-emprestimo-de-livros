@@ -1,7 +1,9 @@
 #ifndef LISTA_EMPRESTIMOS
 #define LISTA_EMPRESTIMOS
-#include "../usuarios/usuarios.h"
-#include "../livros/livros.h"
+#include "../usuarios/usuarios.h" // Seguro incluir
+
+// Forward declaration para evitar ciclo com livros.h
+struct NoLivro;
 
 typedef struct NO_EMPRESTIMO{
     NoUsuario* usuario;
@@ -13,4 +15,6 @@ typedef struct NO_EMPRESTIMO{
 int emprestarLivro(NoLivro* livro, NoUsuario* usuario, char* dataEmprestimo, char* dataDevolucao);
 int devolverLivro(NoLivro* livro, NoUsuario* usuario);
 int freeListaEmprestimo(NoLivro* livro);
+void exibirFilaEspera(NoLivro* livro);
+void listarEmprestimosPorUsuario(struct NO_LIVRO* header, NoUsuario* usuario);
 #endif

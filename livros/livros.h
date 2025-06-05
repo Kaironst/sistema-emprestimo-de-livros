@@ -1,14 +1,17 @@
 #ifndef LISTA_LIVROS
 #define LISTA_LIVROS
-#include "../emprestimos/emprestimos.h"
+
+// Forward declarations para evitar ciclos
+struct NO_EMPRESTIMO;
+struct NO_FILA;
 
 typedef struct NO_LIVRO {
     char *titulo;
     char *autor;
     int cod;
     int qtdeDisponivel;
-    NoEmprestimo* emprestimos;
-    NoFila* filaEspera;
+    struct NO_EMPRESTIMO* emprestimos;
+    struct NO_FILA* filaEspera;
     struct NO_LIVRO *proximo;
     struct NO_LIVRO *anterior;
 }NoLivro;  //implementação da lista dupla com cabeçalho
