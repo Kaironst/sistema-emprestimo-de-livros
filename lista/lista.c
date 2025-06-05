@@ -6,12 +6,6 @@
 #include "../livros/livros.h"
 #include "lista.h"
 
-// Inicializa a lista de fila (retorna NULL para fila vazia)
-NoEmprestimo* iniListaFila() {
-    return NULL; // Uma fila vazia é simplesmente representada por um ponteiro NULL
-                 // Não há necessidade de alocar memória inicialmente para representar a fila
-}
-
 // Função auxiliar para criar um novo nó
 static NoFila* criarNoFila(NoUsuario* usuario, const char* dataRequisicao) {
     NoFila* novo = (NoFila*) malloc(sizeof(NoFila));
