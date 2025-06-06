@@ -9,7 +9,8 @@ Aqui foi realizado a implementação de um sistema de empréstimo de livros de u
 - devolução de livros,
 - listagem de livros emprestados por um usuário,
 - exibição de fila de espera de um determinado livro. 
-
+- busca de livro pro título. 
+- busca de usuário por nome. 
 
 # Instrução de sistema
 Ao iniciar o arquivo main.c, o usuário verá o seguinte menu:
@@ -21,6 +22,8 @@ Ao iniciar o arquivo main.c, o usuário verá o seguinte menu:
 "4. Devolver livro"
 "5. Listar livros emprestados por usuário"
 "6. Exibir fila de espera de um livro"
+"7. Buscar Livro por Título"
+"8. Buscar Usuário por nome"
 "0. Sair"
 "Escolha uma opção: "
 ```
