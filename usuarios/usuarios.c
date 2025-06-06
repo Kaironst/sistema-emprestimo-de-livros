@@ -22,6 +22,7 @@ int addUsuario(NoUsuario* header, char* nome, int raSiape, tipoUsuario tipoUsuar
     header->proximo=novo;
     if (novo->proximo!=NULL)
         novo->proximo->anterior=novo;
+    return 1;
 }
 
 int rmUsuario(NoUsuario* no) {
@@ -54,4 +55,5 @@ int freeListaUsuario(NoUsuario* header) {
     while(rmUsuario(header->proximo));
     free(header);
     header=NULL;
+    return 1;
 }

@@ -8,6 +8,7 @@ struct NoLivro;
 typedef struct NO_FILA {
 NoUsuario* usuario;
 char* dataRequisicao;
+char* dataDevolucao;
 struct NO_FILA* proximo;
 }NoFila;        // lista circular (primeiro é o último)
 

@@ -7,10 +7,11 @@
 #include "lista.h"
 
 // Função auxiliar para criar um novo nó
-static NoFila* criarNoFila(NoUsuario* usuario, const char* dataRequisicao) {
+static NoFila* criarNoFila(NoUsuario* usuario, const char* dataRequisicao, char* dataDevolucao) {
     NoFila* novo = (NoFila*) malloc(sizeof(NoFila));
     novo->usuario = usuario;
     novo->dataRequisicao = strdup(dataRequisicao);
+    novo->dataRequisicao = strdup(dataDevolucao);
     if (!novo->dataRequisicao) {
         free(novo);
         return NULL;
@@ -22,7 +23,7 @@ static NoFila* criarNoFila(NoUsuario* usuario, const char* dataRequisicao) {
 
 // Adiciona um usuário na fila circular do livro
 int addFilaLivro(NoLivro* livro, NoUsuario* usuario, char* dataEmprestimo, char* dataDevolucao) {
-    NoFila* novo = criarNoFila(usuario, dataEmprestimo);
+    NoFila* novo = criarNoFila(usuario, dataEmprestimo, dataDevolucao);
 
     if (!livro->filaEspera) {
         // Fila vazia: nó aponta para ele mesmo

@@ -9,15 +9,15 @@
 
 //print de todo o menu para facilitar
 void menu() {
-    printf("\n=== Sistema de Empréstimo de Livros ===\n");
-    printf("1. Cadastrar usuário\n");
+    printf("\n=== Sistema de Emprestimo de Livros ===\n");
+    printf("1. Cadastrar usuario\n");
     printf("2. Cadastrar livro\n");
-    printf("3. Realizar empréstimo\n");
+    printf("3. Realizar emprestimo\n");
     printf("4. Devolver livro\n");
-    printf("5. Listar livros emprestados por usuário\n");
+    printf("5. Listar livros emprestados por usuario\n");
     printf("6. Exibir fila de espera de um livro\n");
     printf("0. Sair\n");
-    printf("Escolha uma opção: ");
+    printf("Escolha uma opcao: ");
 }
 
 int main() {
@@ -34,8 +34,8 @@ int main() {
             case 1: {   //cadastrar usuario
                 char nome[100];
                 int raSiape, tipo;
-
-                printf("Nome do usuário: ");
+                
+                printf("Nome do usuario: ");
                 fgets(nome, 100, stdin);
                 nome[strcspn(nome, "\n")] = 0;
 
@@ -46,16 +46,32 @@ int main() {
                 scanf("%d", &tipo);
                 getchar();
 
+                // Verificação se o usuário já existe
+                NoUsuario* aux = listaUsuarios;
+                int existe = 0;
+                while (aux != NULL) {
+                    if (aux->raSiape == raSiape) {
+                    existe = 1;
+                    break;
+                }
+                aux = aux->proximo;
+            }
+
+            if (existe==1) {
+                printf("Erro: Usuario de raSiape %d ja cadastrado.\n", raSiape);
+                break;
+            }
+
                 addUsuario(listaUsuarios, strdup(nome), raSiape, tipo == 0 ? ALUNO : PROFESSOR);
-                printf("Usuário cadastrado com sucesso.\n");
+                printf("Usuario cadastrado com sucesso.\n");
                 break;
             }
 
             case 2: {   //cadastro de livro
                 char titulo[100], autor[100];
                 int cod, qtde;
-
-                printf("Título do livro: ");
+                
+                printf("Titulo do livro: ");
                 fgets(titulo, 100, stdin);
                 titulo[strcspn(titulo, "\n")] = 0;
 
@@ -63,13 +79,29 @@ int main() {
                 fgets(autor, 100, stdin);
                 autor[strcspn(autor, "\n")] = 0;
 
-                printf("Código do livro: ");
+                printf("Codigo do livro: ");
                 scanf("%d", &cod);
 
-                printf("Quantidade disponível: ");
+                printf("Quantidade disponivel: ");
                 scanf("%d", &qtde);
                 getchar();
+                
+                // Verificação se o livro já existe
+                NoLivro* aux = listaLivros;
+                int existe = 0;
+                while (aux != NULL) {
+                    if (aux->cod == cod) {
+                    existe = 1;
+                    break;
+                }
+                aux = aux->proximo;
+            }
 
+            if (existe==1) {
+                printf("Erro: Livro de codigo %d já cadastrado.\n", cod);
+                break;
+            }
+                
                 addLivro(listaLivros, strdup(titulo), strdup(autor), cod, qtde);
                 printf("Livro cadastrado com sucesso.\n");
                 break;
@@ -78,24 +110,24 @@ int main() {
             case 3: {   //realizar empréstimo
                 int raSiape, cod;
                 char dataEmp[11], dataDev[11];
-
-                printf("RA/SIAPE do usuário: ");
+                
+                printf("RA/SIAPE do usuario: ");
                 scanf("%d", &raSiape);
 
-                printf("Código do livro: ");
+                printf("Codigo do livro: ");
                 scanf("%d", &cod);
 
-                printf("Data de empréstimo (dd/mm/aaaa): ");
+                printf("Data de emprestimo (dd/mm/aaaa): ");
                 scanf("%s", dataEmp);
 
-                printf("Data de devolução (dd/mm/aaaa): ");
+                printf("Data de devolucao (dd/mm/aaaa): ");
                 scanf("%s", dataDev);
 
                 NoUsuario* usuario = getUsuarioRaSiape(listaUsuarios, raSiape);
                 NoLivro* livro = getLivroCod(listaLivros, cod);
 
                 if (!usuario || !livro) {
-                    printf("Usuário ou livro não encontrado.\n");
+                    printf("Usuario ou livro nao encontrado.\n");
                     break;
                 }
 
@@ -105,17 +137,18 @@ int main() {
 
             case 4: {   //devolver livro
                 int raSiape, cod;
-                printf("RA/SIAPE do usuário: ");
+                
+                printf("RA/SIAPE do usuario: ");
                 scanf("%d", &raSiape);
 
-                printf("Código do livro: ");
+                printf("Codigo do livro: ");
                 scanf("%d", &cod);
 
                 NoUsuario* usuario = getUsuarioRaSiape(listaUsuarios, raSiape);
                 NoLivro* livro = getLivroCod(listaLivros, cod);
 
                 if (!usuario || !livro) {
-                    printf("Usuário ou livro não encontrado.\n");
+                    printf("Usuario ou livro nao encontrado.\n");
                     break;
                 }
 
@@ -129,12 +162,13 @@ int main() {
 
             case 5: {   //listar livros emprestados pelo usuário
                 int raSiape;
-                printf("RA/SIAPE do usuário: ");
+                
+                printf("RA/SIAPE do usuario: ");
                 scanf("%d", &raSiape);
                 NoUsuario* usuario = getUsuarioRaSiape(listaUsuarios, raSiape);
 
                 if (!usuario) {
-                    printf("Usuário não encontrado.\n");
+                    printf("Usuario não encontrado.\n");
                     break;
                 }
 
@@ -144,12 +178,13 @@ int main() {
 
             case 6: {   //exibir fila de espera de um livro
                 int cod;
-                printf("Código do livro: ");
+                
+                printf("Codigo do livro: ");
                 scanf("%d", &cod);
                 NoLivro* livro = getLivroCod(listaLivros, cod);
 
                 if (!livro) {
-                    printf("Livro não encontrado.\n");
+                    printf("Livro nao encontrado.\n");
                     break;
                 }
 
@@ -158,11 +193,13 @@ int main() {
             }
 
             case 0:{
+                
                 printf("Encerrando o sistema...\n");
                 break;
 
             default:
-                printf("Opção inválida. Tente novamente.\n");
+                
+                printf("Opcao invalida. Tente novamente.\n");
                 break;
             }
 

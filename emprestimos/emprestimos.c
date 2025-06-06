@@ -75,7 +75,7 @@ int freeListaEmprestimo(NoLivro* livro) {
         aux=temp;
     }
     free(livro->emprestimos);
-    livro->emprestimos==NULL;
+    livro->emprestimos=NULL;
     return 1;
 }
 

@@ -64,9 +64,11 @@ NoLivro* getLivroCod(NoLivro* header, int cod) {
 
 int setQtde(NoLivro* no, int qtde) {
     no->qtdeDisponivel=qtde;
+    return qtde;
 }
 
 int freeListaLivro(NoLivro* header) {
 while (rmLivro(header->proximo));
 free(header);
+return 1;
 }
