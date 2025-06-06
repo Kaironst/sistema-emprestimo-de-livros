@@ -17,8 +17,8 @@ void menu() {
     printf("4. Devolver livro\n");
     printf("5. Listar livros emprestados por usuario\n");
     printf("6. Exibir fila de espera de um livro\n");
-    printf("7. Buscar Livro por Título\n");
-    printf("8. Buscar Usuário por nome\n");
+    printf("7. Buscar Livro por Titulo\n");
+    printf("8. Buscar Usuario por nome\n");
     printf("0. Sair\n");
     printf("Escolha uma opcao: ");
 }
@@ -200,7 +200,7 @@ int main() {
             case 7: { //busca livro pelo nome
                 char titulo [100];
 
-                printf("Digite o Título do Livro: \n");
+                printf("Digite o Titulo do Livro: \n");
                 fgets(titulo, 100, stdin);
                 for (int i=0; i<strlen(titulo); i++) titulo[i] = tolower(titulo[i]);
                 titulo[strcspn(titulo, "\n")] = 0;
@@ -221,7 +221,7 @@ int main() {
             case 8: {   //busca usuario pelo nome
                 char nome [100];
 
-                printf("Digite o Nome do Usuário: \n");
+                printf("Digite o Nome do Usuario: \n");
                 fgets(nome, 100, stdin);
                 for (int i=0; i<strlen(nome); i++) nome[i] = tolower(nome[i]);
                 nome[strcspn(nome, "\n")] = 0;
@@ -232,7 +232,7 @@ int main() {
                     break;
                 }
 
-                printf(" Nome: %s \n Ra/Siape: %d \n Numero de Empréstimos: %d \n Professor?: %d \n",
+                printf(" Nome: %s \n Ra/Siape: %d \n Numero de Emprestimos: %d \n Professor?: %d \n",
                 usuario->nome, usuario->raSiape, usuario->numEmprestimos, usuario->tipoUsuario
                 );
                 
