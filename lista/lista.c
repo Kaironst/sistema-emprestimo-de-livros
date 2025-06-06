@@ -11,7 +11,7 @@ static NoFila* criarNoFila(NoUsuario* usuario, const char* dataRequisicao, char*
     NoFila* novo = (NoFila*) malloc(sizeof(NoFila));
     novo->usuario = usuario;
     novo->dataRequisicao = strdup(dataRequisicao);
-    novo->dataRequisicao = strdup(dataDevolucao);
+    novo->dataDevolucao = strdup(dataDevolucao);
     if (!novo->dataRequisicao) {
         free(novo);
         return NULL;
