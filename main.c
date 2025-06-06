@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 #include "usuarios/usuarios.h"
 #include "livros/livros.h"
@@ -17,6 +18,8 @@ void menu() {
     printf("5. Listar livros emprestados por usuario\n");
     printf("6. Exibir fila de espera de um livro\n");
     printf("0. Sair\n");
+    printf("7. Buscar Livro por Título\n");
+    printf("8. Buscar Usuário por nome\n");
     printf("Escolha uma opcao: ");
 }
 
@@ -37,6 +40,7 @@ int main() {
                 
                 printf("Nome do usuario: ");
                 fgets(nome, 100, stdin);
+                for (int i=0; i<strlen(nome); i++) nome[i] = tolower(nome[i]);
                 nome[strcspn(nome, "\n")] = 0;
 
                 printf("RA/SIAPE: ");
@@ -73,6 +77,7 @@ int main() {
                 
                 printf("Titulo do livro: ");
                 fgets(titulo, 100, stdin);
+                for (int i=0; i<strlen(titulo); i++) titulo[i] = tolower(titulo[i]);
                 titulo[strcspn(titulo, "\n")] = 0;
 
                 printf("Autor: ");
@@ -179,7 +184,7 @@ int main() {
             case 6: {   //exibir fila de espera de um livro
                 int cod;
                 
-                printf("Codigo do livro: ");
+                printf("Digite o Codigo do livro: \n");
                 scanf("%d", &cod);
                 NoLivro* livro = getLivroCod(listaLivros, cod);
 
@@ -189,6 +194,48 @@ int main() {
                 }
 
                 exibirFilaEspera(livro);
+                break;
+            }
+
+            case 7: { //busca livro pelo nome
+                char titulo [100];
+
+                printf("Digite o Título do Livro: \n");
+                fgets(titulo, 100, stdin);
+                for (int i=0; i<strlen(titulo); i++) titulo[i] = tolower(titulo[i]);
+                titulo[strcspn(titulo, "\n")] = 0;
+                NoLivro* livro = getLivro(listaLivros,titulo);
+
+                if (!livro) {
+                    printf("Livro nao encontrado. \n");
+                    break;
+                }
+
+                printf(" Titulo: %s \n Autor: %s \n Cod: %d \n Qtde Disponível: %d \n",
+                    livro->titulo, livro->autor, livro->cod, livro->qtdeDisponivel
+                );
+
+                break;
+            }
+
+            case 8: {   //busca usuario pelo nome
+                char nome [100];
+
+                printf("Digite o Nome do Usuário: \n");
+                fgets(nome, 100, stdin);
+                for (int i=0; i<strlen(nome); i++) nome[i] = tolower(nome[i]);
+                nome[strcspn(nome, "\n")] = 0;
+                NoUsuario* usuario = getUsuario(listaUsuarios, nome);
+
+                if (!usuario) {
+                    printf("Usuario nao encontrado. \n");
+                    break;
+                }
+
+                printf(" Nome: %s \n Ra/Siape: %d \n Numero de Empréstimos: %d \n Professor?: %d \n",
+                usuario->nome, usuario->raSiape, usuario->numEmprestimos, usuario->tipoUsuario
+                );
+                
                 break;
             }
 
