@@ -103,7 +103,7 @@ void listarEmprestimosPorUsuario(NoLivro* header, NoUsuario* usuario) {
             NoEmprestimo* atual = emp;
             do {
                 if (atual->usuario == usuario) {
-                    printf("Livro: %s | Empréstimo: %s | Devolução: %s\n",
+                    printf("Livro: %s | Emprestimo: %s | Devolucao: %s\n",
                            livro->titulo, atual->dataEmprestimo, atual->dataDevolucao);
                     encontrou = 1;
                 }
@@ -114,6 +114,6 @@ void listarEmprestimosPorUsuario(NoLivro* header, NoUsuario* usuario) {
     }
 
     if (!encontrou) {
-        printf("Nenhum empréstimo encontrado para o usuário %s.\n", usuario->nome);
+        printf("Nenhum emprestimo encontrado para o usuario %s.\n", usuario->nome);
     }
 }

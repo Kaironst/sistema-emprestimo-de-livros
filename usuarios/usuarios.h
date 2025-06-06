@@ -15,6 +15,7 @@ typedef struct NO_USUARIO {
     struct NO_USUARIO* anterior;
 }NoUsuario;     //implementação da lista duplamente encadeada com cabeçalho
 
+//Autor: Pedro
 NoUsuario* iniListaUsuario();   //cria lista
 int addUsuario(NoUsuario* header, char* nome, int raSiape, tipoUsuario tipoUsuario);
 int rmUsuario(NoUsuario* no); //remove usuario da lista

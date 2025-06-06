@@ -12,6 +12,7 @@ typedef struct NO_EMPRESTIMO{
     struct NO_EMPRESTIMO* proximo;
 } NoEmprestimo; //implementação lista circular (o primeiro ponteiro nesse caso é o ultimo)
 
+//Autor: Pedro
 int emprestarLivro(NoLivro* livro, NoUsuario* usuario, char* dataEmprestimo, char* dataDevolucao);      //cria novo nó na lista de emprestimos de um livro
 int devolverLivro(NoLivro* livro, NoUsuario* usuario);      //remove o nó de empréstimo
 int freeListaEmprestimo(NoLivro* livro);        //remove a lista de empréstimos do livro
