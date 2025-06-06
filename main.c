@@ -17,9 +17,9 @@ void menu() {
     printf("4. Devolver livro\n");
     printf("5. Listar livros emprestados por usuario\n");
     printf("6. Exibir fila de espera de um livro\n");
-    printf("0. Sair\n");
     printf("7. Buscar Livro por Título\n");
     printf("8. Buscar Usuário por nome\n");
+    printf("0. Sair\n");
     printf("Escolha uma opcao: ");
 }
 
