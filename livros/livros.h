@@ -16,6 +16,7 @@ typedef struct NO_LIVRO {
     struct NO_LIVRO *anterior;
 }NoLivro;  //implementação da lista dupla com cabeçalho
 
+//Autor: Bruno
 NoLivro* iniListaLivro();        //cria lista
 int addLivro(NoLivro* header,char* titulo, char* autor, int cod, int qtdeDisponivel);       //adiciona livro no inicio da lista
 int rmLivro(NoLivro* No);      //remove livro especificado pelo nó
