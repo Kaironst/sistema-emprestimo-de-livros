@@ -12,7 +12,7 @@
         "livros/livros.c",
         "usuarios/usuarios.c",
         "-o",
-        "programa",
+        "main",
       ],
       "group": {
         "kind": "build",
